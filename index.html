@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзыв</title>
+    <style>
+         form{
+background-color:#ffffff;
+width:15%;
+margin:0 auto;
+padding:15px;
+}
+    </style>
+</head>
+<body>
+    <div class="form-wrapper">
+    <form action="go.php" method="POST" enctype="multipart/form-data"> 
+        <fieldset>
+            <h3>Ваш отзыв - сюда</h3> 
+
+            <div class="fName">
+                <label>Имя</label> <br> 
+                <input name="name" type="text" required>
+            </div>
+            <br> 
+            <div class="fDate">
+                <label>Дата</label>
+                <br> 
+                <input name="date" type="date" required>
+            </div>
+            <br> 
+            <div class="fMessage">
+                <label>Отзыв</label> <br> 
+                <textarea name="text" required></textarea>
+            </div>
+            <br> <br> 
+            <!-- капча началась-->
+            <form action="go.php" method="post" enctype="multipart/form-data">
+                <!-- Форма будет отправлять введенные пользователем данные скрипту go.php методом POST -->
+                <img src='captcha.php' id='capcha-image'> 
+                <br> 
+                <br> 
+                <br> 
+                <a href="javascript:void(0);" onclick="document.getElementById('capcha-image').src='captcha.php?rid=' + Math.random();">Обновить картинку</a>
+                <br> 
+                <!-- Ссылка на обновление капчи. Запрашиваем у captcha.php случайное изображение.  -->
+                <span>Введите текст с картинки</span> <br> 
+                <input type="text" name="code">
+                <input type="submit" name="go" value="Подтверждаю, что не бот">
+                <br> 
+                <!-- Отправляем данные скрипту-обработчику go.php -->
+                </form>
+            <!-- капча закончилась-->
+            <br> 
+            <button formnovalidate type="submit">Отправить</button> 
+            <button formnovalidate type="reset">Очистить</button>
+            <br> 
+
+            
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
